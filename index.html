@@ -322,7 +322,7 @@
             border-bottom: none;
         }
 
-        /* Showcase Section - NOVO SLIDER */
+        /* Showcase Section - SLIDER CORRIGIDO */
         .showcase-slider-container {
             position: relative;
             max-width: 1000px;
@@ -330,13 +330,14 @@
             border-radius: 10px;
             box-shadow: var(--shadow);
             background-color: #f0f0f0;
+            overflow: hidden;
         }
 
         .showcase-slider {
             display: flex;
             transition: transform 0.5s ease;
             height: 400px;
-            overflow: hidden;
+            width: 100%;
         }
 
         .showcase-slide {
@@ -345,6 +346,7 @@
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
+            flex-shrink: 0;
         }
 
         .showcase-controls {
@@ -352,6 +354,7 @@
             justify-content: center;
             margin-top: 20px;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .showcase-btn {
@@ -654,9 +657,18 @@
             .showcase-slider {
                 height: 250px;
             }
+            
+            .showcase-controls {
+                gap: 5px;
+            }
+            
+            .showcase-btn {
+                width: 10px;
+                height: 10px;
+            }
         }
 
-        /* CORREÇÃO PARA SCROLL - GARANTIR FUNCIONAMENTO */
+        /* CORREÇÃO PARA SCROLL */
         html {
             overflow: auto;
         }
@@ -682,14 +694,7 @@
             touch-action: pan-y !important;
         }
 
-        /* Garantir que todos os elementos permitam scroll */
-        * {
-            -webkit-user-select: auto !important;
-            user-select: auto !important;
-            -webkit-touch-callout: default !important;
-        }
-
-        /* INSTALL PROMPT - Mensagem de instalação */
+        /* INSTALL PROMPT */
         .install-prompt {
             position: fixed;
             bottom: 20px;
@@ -873,7 +878,7 @@
         </div>
     </section>
 
-    <!-- Showcase Section - NOVO SLIDER -->
+    <!-- Showcase Section - SLIDER CORRIGIDO -->
     <section id="showcase" class="showcase">
         <div class="container">
             <div class="section-title">
@@ -908,20 +913,20 @@
             </div>
             <div class="showcase-controls">
                 <button class="showcase-btn active" data-slide="0"></button>
-                <button class="showcase-btn active" data-slide="1"></button>
-                <button class="showcase-btn active" data-slide="2"></button>
-                <button class="showcase-btn active" data-slide="3"></button>
-                <button class="showcase-btn active" data-slide="4"></button>
-                <button class="showcase-btn active" data-slide="5"></button>
-                <button class="showcase-btn active" data-slide="6"></button>
-                <button class="showcase-btn active" data-slide="7"></button>
-                <button class="showcase-btn active" data-slide="8"></button>
-                <button class="showcase-btn active" data-slide="9"></button>
-                <button class="showcase-btn active" data-slide="10"></button>
-                <button class="showcase-btn active" data-slide="11"></button>
-                <button class="showcase-btn active" data-slide="12"></button>
-                <button class="showcase-btn active" data-slide="13"></button>
-                <button class="showcase-btn active" data-slide="14"></button>
+                <button class="showcase-btn" data-slide="1"></button>
+                <button class="showcase-btn" data-slide="2"></button>
+                <button class="showcase-btn" data-slide="3"></button>
+                <button class="showcase-btn" data-slide="4"></button>
+                <button class="showcase-btn" data-slide="5"></button>
+                <button class="showcase-btn" data-slide="6"></button>
+                <button class="showcase-btn" data-slide="7"></button>
+                <button class="showcase-btn" data-slide="8"></button>
+                <button class="showcase-btn" data-slide="9"></button>
+                <button class="showcase-btn" data-slide="10"></button>
+                <button class="showcase-btn" data-slide="11"></button>
+                <button class="showcase-btn" data-slide="12"></button>
+                <button class="showcase-btn" data-slide="13"></button>
+                <button class="showcase-btn" data-slide="14"></button>
             </div>
         </div>
     </section>
@@ -1038,7 +1043,7 @@
             showSlide(currentSlide + 1);
         }, 5000);
 
-        // NOVO SCRIPT PARA A VITRINE SLIDER
+        // SLIDER DA VITRINE CORRIGIDO
         let currentShowcaseSlide = 0;
         const showcaseSlider = document.getElementById('showcaseSlider');
         const showcaseSlides = document.querySelectorAll('.showcase-slide');
@@ -1046,32 +1051,48 @@
         const showcasePrev = document.querySelector('.showcase-prev');
         const showcaseNext = document.querySelector('.showcase-next');
 
+        // Função para mostrar slide específico
         function showShowcaseSlide(n) {
+            // Garantir que o índice fique dentro dos limites
             currentShowcaseSlide = (n + showcaseSlides.length) % showcaseSlides.length;
+            
+            // Mover o slider
             showcaseSlider.style.transform = `translateX(-${currentShowcaseSlide * 100}%)`;
             
+            // Atualizar botões ativos
             showcaseButtons.forEach(btn => btn.classList.remove('active'));
-            showcaseButtons[currentShowcaseSlide].classList.add('active');
+            if (showcaseButtons[currentShowcaseSlide]) {
+                showcaseButtons[currentShowcaseSlide].classList.add('active');
+            }
         }
 
-        showcaseButtons.forEach(button => {
+        // Event listeners para os botões de controle
+        showcaseButtons.forEach((button, index) => {
             button.addEventListener('click', () => {
-                showShowcaseSlide(parseInt(button.getAttribute('data-slide')));
+                showShowcaseSlide(index);
             });
         });
 
-        showcasePrev.addEventListener('click', () => {
-            showShowcaseSlide(currentShowcaseSlide - 1);
-        });
+        // Event listeners para navegação anterior/próxima
+        if (showcasePrev) {
+            showcasePrev.addEventListener('click', () => {
+                showShowcaseSlide(currentShowcaseSlide - 1);
+            });
+        }
 
-        showcaseNext.addEventListener('click', () => {
-            showShowcaseSlide(currentShowcaseSlide + 1);
-        });
+        if (showcaseNext) {
+            showcaseNext.addEventListener('click', () => {
+                showShowcaseSlide(currentShowcaseSlide + 1);
+            });
+        }
 
-        // Auto slide change para a vitrine (2 segundos)
-        setInterval(() => {
+        // Auto slide change para a vitrine (5 segundos)
+        let slideInterval = setInterval(() => {
             showShowcaseSlide(currentShowcaseSlide + 1);
-        }, 2000);
+        }, 5000);
+
+        // Inicializar o slider
+        showShowcaseSlide(0);
     </script>
     
     <script>
@@ -1090,7 +1111,7 @@
     </script>
 
     <script>
-    // INSTALL PROMPT SIMPLIFICADO - SEMPRE MOSTRAR EM MOBILE
+    // INSTALL PROMPT SIMPLIFICADO
     document.addEventListener('DOMContentLoaded', function() {
         // Só mostrar em dispositivos móveis
         if (window.innerWidth <= 768) {
@@ -1130,4 +1151,3 @@
     </script>
 </body>
 </html>
-
