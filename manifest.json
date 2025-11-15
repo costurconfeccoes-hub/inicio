@@ -2,7 +2,7 @@
   "name": "CosturConfeccoes App",
   "short_name": "Costur Confeccoes",
   "description": "WebApp da CosturConfeccoes",
-  "start_url": "https://costurconfeccoes-hub.github.io/inicio/",
+  "start_url": "/inicio/",
   "display": "fullscreen",
   "background_color": "#ffffff",
   "theme_color": "#000000",
