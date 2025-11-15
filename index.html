@@ -666,125 +666,125 @@
             overflow-y: auto;
             position: relative;
         }
-    /* SOLUÇÃO DEFINITIVA SCROLL MOBILE */
-html {
-    overflow: auto !important;
-    height: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-}
 
-body {
-    overflow: auto !important;
-    height: auto !important;
-    position: relative !important;
-    -webkit-overflow-scrolling: touch !important;
-    touch-action: pan-y !important;
-}
+        /* SOLUÇÃO DEFINITIVA SCROLL MOBILE */
+        html {
+            overflow: auto !important;
+            height: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+        }
 
-/* Garantir que todos os elementos permitam scroll */
-* {
-    -webkit-user-select: auto !important;
-    user-select: auto !important;
-    -webkit-touch-callout: default !important;
-}
+        body {
+            overflow: auto !important;
+            height: auto !important;
+            position: relative !important;
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: pan-y !important;
+        }
 
-/* INSTALL PROMPT - Mensagem de instalação */
-.install-prompt {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--primary);
-    color: white;
-    padding: 15px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    gap: 15px;
-    max-width: 90%;
-    animation: slideUp 0.3s ease;
-}
+        /* Garantir que todos os elementos permitam scroll */
+        * {
+            -webkit-user-select: auto !important;
+            user-select: auto !important;
+            -webkit-touch-callout: default !important;
+        }
 
-.install-prompt.show {
-    display: flex;
-}
+        /* INSTALL PROMPT - Mensagem de instalação */
+        .install-prompt {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            gap: 15px;
+            max-width: 90%;
+            animation: slideUp 0.3s ease;
+        }
 
-.install-prompt-content {
-    flex: 1;
-}
+        .install-prompt.show {
+            display: flex;
+        }
 
-.install-prompt h4 {
-    margin: 0 0 5px 0;
-    font-size: 1rem;
-}
+        .install-prompt-content {
+            flex: 1;
+        }
 
-.install-prompt p {
-    margin: 0;
-    font-size: 0.8rem;
-    opacity: 0.9;
-}
+        .install-prompt h4 {
+            margin: 0 0 5px 0;
+            font-size: 1rem;
+        }
 
-.install-prompt-actions {
-    display: flex;
-    gap: 10px;
-}
+        .install-prompt p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
 
-.install-btn {
-    background: var(--secondary);
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    font-weight: bold;
-}
+        .install-prompt-actions {
+            display: flex;
+            gap: 10px;
+        }
 
-.install-btn:hover {
-    background: #2980b9;
-}
+        .install-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
 
-.close-prompt {
-    background: transparent;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 0;
-    width: 25px;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .install-btn:hover {
+            background: #2980b9;
+        }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
+        .close-prompt {
+            background: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Para mobile */
-@media (max-width: 768px) {
-    .install-prompt {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-    
-    .install-prompt-actions {
-        width: 100%;
-        justify-content: center;
-    }
-}
-        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        /* Para mobile */
+        @media (max-width: 768px) {
+            .install-prompt {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .install-prompt-actions {
+                width: 100%;
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -999,6 +999,18 @@ body {
         </div>
     </footer>
 
+    <!-- Install Prompt -->
+    <div class="install-prompt" id="installPrompt">
+        <div class="install-prompt-content">
+            <h4>📱 Instale nosso App!</h4>
+            <p>Tenha acesso rápido direto da tela inicial</p>
+        </div>
+        <div class="install-prompt-actions">
+            <button class="install-btn" id="installButton">Instalar</button>
+            <button class="close-prompt" id="closePrompt">&times;</button>
+        </div>
+    </div>
+
     <script>
         // Slideshow functionality
         let currentSlide = 0;
@@ -1076,111 +1088,45 @@ body {
         });
     }
     </script>
-<script>
-// SOLUÇÃO DEFINITIVA PARA SCROLL NO MOBILE
-document.addEventListener('DOMContentLoaded', function() {
-    // Forçar habilitação do scroll
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-    
-    // Remover qualquer bloqueio de touch
-    document.body.style.touchAction = 'pan-y';
-    document.body.style.webkitOverflowScrolling = 'touch';
-    
-    // Garantir que o viewport está correto
-    const viewport = document.querySelector('meta[name="viewport"]');
-    if (viewport) {
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes');
-    }
-});
 
-// Também executar quando a página carregar completamente
-window.addEventListener('load', function() {
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-});
-
-// E executar um pouco depois também, para garantir
-setTimeout(function() {
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-    document.body.style.height = 'auto';
-}, 1000);
-</script>
-    <!-- Install Prompt -->
-<div class="install-prompt" id="installPrompt">
-    <div class="install-prompt-content">
-        <h4>📱 Instale nosso App!</h4>
-        <p>Tenha acesso rápido direto da tela inicial</p>
-    </div>
-    <div class="install-prompt-actions">
-        <button class="install-btn" id="installButton">Instalar</button>
-        <button class="close-prompt" id="closePrompt">&times;</button>
-    </div>
-</div>
     <script>
-// INSTALL PROMPT SYSTEM
-let deferredPrompt;
-let installPromptShown = false;
-
-// Mostrar prompt de instalação
-function showInstallPrompt() {
-    // Só mostrar se for em mobile e não tiver mostrado antes
-    if (window.innerWidth <= 768 && !installPromptShown) {
-        setTimeout(() => {
-            const installPrompt = document.getElementById('installPrompt');
-            installPrompt.classList.add('show');
-            installPromptShown = true;
+    // INSTALL PROMPT SIMPLIFICADO - SEMPRE MOSTRAR EM MOBILE
+    document.addEventListener('DOMContentLoaded', function() {
+        // Só mostrar em dispositivos móveis
+        if (window.innerWidth <= 768) {
+            // Verificar se já mostrou antes
+            const alreadyShown = localStorage.getItem('installPromptShown');
             
-            // Salvar no localStorage que já mostrou
-            localStorage.setItem('installPromptShown', 'true');
-        }, 3000); // Mostrar após 3 segundos
-    }
-}
-
-// Evento quando o PWA pode ser instalado
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    showInstallPrompt();
-});
-
-// Botão de instalar
-document.getElementById('installButton').addEventListener('click', async () => {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        
-        if (outcome === 'accepted') {
-            console.log('Usuário aceitou instalar o PWA');
+            if (!alreadyShown) {
+                // Mostrar após 3 segundos
+                setTimeout(() => {
+                    const installPrompt = document.getElementById('installPrompt');
+                    if (installPrompt) {
+                        installPrompt.classList.add('show');
+                        localStorage.setItem('installPromptShown', 'true');
+                    }
+                }, 3000);
+            }
         }
-        
+    });
+
+    // Botão de instalar
+    document.getElementById('installButton').addEventListener('click', function() {
         // Esconder o prompt
         document.getElementById('installPrompt').classList.remove('show');
-        deferredPrompt = null;
-    }
-});
+        
+        // Mensagem de instrução
+        if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+            alert('Para instalar: toque no ícone de compartilhar 📲 e depois em "Adicionar à Tela Inicial"');
+        } else {
+            alert('Para instalar: toque nos 3 pontinhos ⋮ no Chrome e depois em "Adicionar à tela inicial"');
+        }
+    });
 
-// Fechar prompt
-document.getElementById('closePrompt').addEventListener('click', () => {
-    document.getElementById('installPrompt').classList.remove('show');
-});
-
-// Verificar se já mostrou o prompt antes
-if (localStorage.getItem('installPromptShown') === 'true') {
-    installPromptShown = true;
-}
-
-// Mostrar prompt para usuários mobile mesmo sem beforeinstallprompt
-if (window.innerWidth <= 768 && !installPromptShown) {
-    // Verificar se não é iOS (que tem comportamento diferente)
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    if (!isIOS) {
-        showInstallPrompt();
-    }
-}
-</script>
+    // Fechar prompt
+    document.getElementById('closePrompt').addEventListener('click', function() {
+        document.getElementById('installPrompt').classList.remove('show');
+    });
+    </script>
 </body>
 </html>
-
-
