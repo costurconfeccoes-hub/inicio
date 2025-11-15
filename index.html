@@ -870,11 +870,11 @@
     </footer>
 
     <script>
-// Forçar fullscreen em mobile
+// Apenas ajusta altura SEM bloquear scroll
 if ('standalone' in navigator || window.matchMedia('(display-mode: fullscreen)').matches) {
     document.documentElement.style.height = '100%';
     document.body.style.height = '100%';
-    document.body.style.overflow = 'hidden';
+    // REMOVIDA a linha que bloqueia scroll!
 }
 </script>
 
@@ -958,6 +958,7 @@ if ('standalone' in navigator || window.matchMedia('(display-mode: fullscreen)')
     
 </body>
 </html>
+
 
 
 
