@@ -1,15 +1,17 @@
 {
-  "name": "CosturConfeccoes App",
-  "short_name": "Costur Confeccoes",
-  "description": "WebApp da CosturConfeccoes",
+  "name": "Costur Confecções",
+  "short_name": "CosturApp",
+  "description": "WebApp da Costur Confecções",
   "start_url": "/inicio/",
   "display": "fullscreen",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#2c3e50",
+  "theme_color": "#2c3e50",
+  "orientation": "portrait",
+  "scope": "/inicio/",
   "icons": [
     {
       "src": "icon-192.png",
-      "sizes": "192x192",
+      "sizes": "192x192", 
       "type": "image/png"
     },
     {
