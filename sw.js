@@ -2,18 +2,7 @@ const CACHE_NAME = 'costurconfeccoes-v1';
 const urlsToCache = [
   '/inicio/',
   '/inicio/index.html',
-  '/inicio/manifest.json',
-  '/Cliente/',
-  '/clientenalecrim/',
-  '/clientenartdesigner/',
-  '/collab/',
-  '/areadocolaborador/',
-  '/notadecobranca/',
-  '/Agendamento/',
-  '/cadastrodeclientes/',
-  '/calculadordemedidas/',
-  '/calculodeapoioartdesigner/',
-  
+  '/inicio/manifest.json'
 ];
 
 // Instala o Service Worker
