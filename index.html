@@ -237,6 +237,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            background-color: #f0f0f0; /* Adicionado fundo para áreas vazias */
         }
 
         .slide {
@@ -247,8 +248,9 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease;
-            background-size: cover;
+            background-size: contain; /* ALTERADO: de cover para contain */
             background-position: center;
+            background-repeat: no-repeat; /* ADICIONADO */
         }
 
         .slide.active {
@@ -319,6 +321,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: var(--shadow);
+            background-color: #f0f0f0; /* Adicionado fundo para áreas vazias */
         }
 
         .showcase-slider {
@@ -330,9 +333,9 @@
         .showcase-slide {
             min-width: 100%;
             height: 100%;
-            background-size: cover;
+            background-size: contain; /* ALTERADO: de cover para contain */
             background-position: center;
-            background-repeat: no-repeat;
+            background-repeat: no-repeat; /* ADICIONADO */
         }
 
         .showcase-controls {
@@ -923,8 +926,3 @@
     </script>
 </body>
 </html>
-
-
-
-
-
