@@ -2,7 +2,7 @@ const CACHE_NAME = 'costurconfeccoes-v1';
 const urlsToCache = [
   '/inicio/',
   '/inicio/index.html',
-  '/inicio/manifest.json'
+  '/inicio/manifest.json',
   '/Cliente/',
   '/clientenalecrim/',
   '/clientenartdesigner/',
