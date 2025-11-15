@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2c3e50">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Costur Confecções">
-<link rel="apple-touch-icon" href="icon-192.png">
-<meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Costur Confecções">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="mobile-web-app-capable" content="yes">
     <style>
         * {
             margin: 0;
@@ -34,6 +34,8 @@
             background-color: #f9f9f9;
             color: var(--text);
             line-height: 1.6;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .container {
@@ -244,7 +246,7 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: var(--shadow);
-            background-color: #f0f0f0; /* Adicionado fundo para áreas vazias */
+            background-color: #f0f0f0;
         }
 
         .slide {
@@ -255,9 +257,9 @@
             height: 100%;
             opacity: 0;
             transition: opacity 1s ease;
-            background-size: contain; /* ALTERADO: de cover para contain */
+            background-size: contain;
             background-position: center;
-            background-repeat: no-repeat; /* ADICIONADO */
+            background-repeat: no-repeat;
         }
 
         .slide.active {
@@ -325,24 +327,24 @@
             position: relative;
             max-width: 1000px;
             margin: 0 auto;
-            overflow: hidden;
             border-radius: 10px;
             box-shadow: var(--shadow);
-            background-color: #f0f0f0; /* Adicionado fundo para áreas vazias */
+            background-color: #f0f0f0;
         }
 
         .showcase-slider {
             display: flex;
             transition: transform 0.5s ease;
             height: 400px;
+            overflow: hidden;
         }
 
         .showcase-slide {
             min-width: 100%;
             height: 100%;
-            background-size: contain; /* ALTERADO: de cover para contain */
+            background-size: contain;
             background-position: center;
-            background-repeat: no-repeat; /* ADICIONADO */
+            background-repeat: no-repeat;
         }
 
         .showcase-controls {
@@ -653,6 +655,17 @@
                 height: 250px;
             }
         }
+
+        /* CORREÇÃO PARA SCROLL - GARANTIR FUNCIONAMENTO */
+        html {
+            overflow: auto;
+        }
+        
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
     </style>
 </head>
 <body>
@@ -790,7 +803,6 @@
                 <button class="showcase-btn" data-slide="12"></button>
                 <button class="showcase-btn" data-slide="13"></button>
                 <button class="showcase-btn" data-slide="14"></button>
-            
             </div>
         </div>
     </section>
@@ -805,7 +817,6 @@
                 <div class="contact-info">
                     <h3><i class="fas fa-comments"></i> Fale Conosco</h3>
                     
-                    <!-- Informações de contato movidas para cá -->
                     <div class="contact-details">
                         <p><i class="fas fa-phone"></i> (81) 9.2140-5569 / (81) 9.9201-4171</p>
                         <p><i class="fas fa-map-marker-alt"></i> Rua professor ferrucio, 436, São Francisco - Caruaru/PE</p>
@@ -945,14 +956,6 @@
                 });
         });
     }
-</script>
-    
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
