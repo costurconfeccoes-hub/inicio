@@ -925,6 +925,23 @@
             showShowcaseSlide(currentShowcaseSlide + 1);
         }, 2000);
     </script>
+    
+    <script>
+    // Registrar o Service Worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/sw.js')
+                .then(function(registration) {
+                    console.log('Service Worker registrado com sucesso:', registration.scope);
+                })
+                .catch(function(error) {
+                    console.log('Falha ao registrar Service Worker:', error);
+                });
+        });
+    }
+</script>
+    
 </body>
 </html>
+
 
