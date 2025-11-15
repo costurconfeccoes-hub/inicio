@@ -3,6 +3,17 @@ const urlsToCache = [
   '/inicio/',
   '/inicio/index.html',
   '/inicio/manifest.json'
+  '/Cliente/',
+  '/clientenalecrim/',
+  '/clientenartdesigner/',
+  '/collab/',
+  '/areadocolaborador/',
+  '/notadecobranca/',
+  '/Agendamento/',
+  '/cadastrodeclientes/',
+  '/calculadordemedidas/',
+  '/calculodeapoioartdesigner/',
+  
 ];
 
 // Instala o Service Worker
