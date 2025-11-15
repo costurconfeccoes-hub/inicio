@@ -8,9 +8,10 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#2c3e50">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Costur Confecções">
 <link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
     <style>
         * {
             margin: 0;
@@ -869,6 +870,15 @@
     </footer>
 
     <script>
+// Forçar fullscreen em mobile
+if ('standalone' in navigator || window.matchMedia('(display-mode: fullscreen)').matches) {
+    document.documentElement.style.height = '100%';
+    document.body.style.height = '100%';
+    document.body.style.overflow = 'hidden';
+}
+</script>
+
+    <script>
         // Slideshow functionality
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
@@ -948,6 +958,7 @@
     
 </body>
 </html>
+
 
 
 
