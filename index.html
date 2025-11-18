@@ -124,7 +124,7 @@
             font-weight: 500;
         }
 
-        /* Botão Cliente Circular */
+        /* Botão Cliente Circular - MODIFICADO PARA MODAL */
         .client-area-btn {
             position: fixed;
             top: 50%;
@@ -146,6 +146,8 @@
             z-index: 1000;
             text-align: center;
             padding: 10px;
+            cursor: pointer;
+            border: none;
         }
 
         .client-area-btn:hover {
@@ -551,6 +553,7 @@
             color: #aaa;
         }
 
+        /* Botão Colaborador - MODIFICADO PARA MODAL */
         .collaborator-btn {
             display: inline-block;
             background-color: var(--secondary);
@@ -561,6 +564,8 @@
             font-weight: bold;
             transition: all 0.3s ease;
             margin-top: 20px;
+            cursor: pointer;
+            border: none;
         }
 
         .collaborator-btn:hover {
@@ -777,6 +782,52 @@
             }
         }
 
+        /* MODAL STYLES - NOVO */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 95%;
+            height: 95%;
+            margin: 2.5% auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 2001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iframe-modal {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         /* Para mobile */
         @media (max-width: 768px) {
             .install-prompt {
@@ -789,15 +840,29 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            .modal-content {
+                width: 98%;
+                height: 98%;
+                margin: 1% auto;
+            }
+
+            .close-btn {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Botão Cliente Circular -->
-    <a href="https://costurconfeccoes-hub.github.io/Cliente/" class="client-area-btn">
+    <!-- Botão Cliente Circular - AGORA É UM BOTÃO PARA MODAL -->
+    <button class="client-area-btn" onclick="abrirModal('https://costurconfeccoes-hub.github.io/Cliente/')">
         <i class="fas fa-user-circle"></i>
         <span>Área do Cliente</span>
-    </a>
+    </button>
 
     <!-- Header -->
     <header>
@@ -979,9 +1044,10 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/costurconfeccoes" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
-                    <a href="https://costurconfeccoes-hub.github.io/collab/" class="collaborator-btn">
+                    <!-- Botão Colaborador AGORA É UM BOTÃO PARA MODAL -->
+                    <button class="collaborator-btn" onclick="abrirModal('https://costurconfeccoes-hub.github.io/collab/')">
                         <i class="fas fa-users"></i> Área do Colaborador
-                    </a>
+                    </button>
                 </div>
                 <div class="footer-column">
                     <h3>Links Rápidos</h3>
@@ -1003,6 +1069,14 @@
             </div>
         </div>
     </footer>
+
+    <!-- MODAL PARA PÁGINAS INTERNAS -->
+    <div id="modalContainer" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="fecharModal()">×</button>
+            <iframe id="modalIframe" class="iframe-modal" src="about:blank" title="Conteúdo"></iframe>
+        </div>
+    </div>
 
     <!-- Install Prompt -->
     <div class="install-prompt" id="installPrompt">
@@ -1093,6 +1167,40 @@
 
         // Inicializar o slider
         showShowcaseSlide(0);
+
+        // FUNÇÕES DO MODAL
+        function abrirModal(url) {
+            const modal = document.getElementById('modalContainer');
+            const iframe = document.getElementById('modalIframe');
+            
+            iframe.src = url;
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modalContainer');
+            const iframe = document.getElementById('modalIframe');
+            
+            modal.style.display = 'none';
+            iframe.src = 'about:blank';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fechar modal clicando fora
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modalContainer');
+            if (event.target === modal) {
+                fecharModal();
+            }
+        });
+
+        // Fechar modal com ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                fecharModal();
+            }
+        });
     </script>
     
     <script>
